@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { robotoSlab } from "./layout";
+import TeamSection from "@/components/teams";
+import BeforeAfterSection from "@/components/satisfaction";
 
 const services = [
   {
@@ -294,6 +296,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* stats section */}
       <section className="w-full mt-4 flex flex-col justify-center items-center">
         <div className="w-full flex flex-col justify-center items-center bg-[#552bb6] py-16 md:py-20 px-4">
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-5">
@@ -398,6 +401,12 @@ export default function Home() {
           </h1>
         </div>
       </section>
+
+      {/* Team section */}
+      <TeamSection />
+
+      {/* patiets section */}
+      <BeforeAfterSection />
     </div>
   );
 }
