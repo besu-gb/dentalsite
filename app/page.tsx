@@ -89,13 +89,13 @@ export default function Home() {
     <div>
       {/* hero section */}
       <section className="flex flex-col justify-center items-center mt-4 px-4">
-        <div className="w-full max-w-7xl flex flex-col justify-center items-center bg-main rounded-[30px] overflow-hidden relative py-5 z-10">
+        <div className="w-full max-w-7xl flex flex-col justify-center items-center bg-[url('/background.jpeg')] bg-center bg-cover bg-no-repeat rounded-[30px] overflow-hidden relative py-5 z-10">
+          {" "}
           <h1
             className={`${robotoSlab.className} font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[11rem] mt-8 md:mt-10 z-1 text-center`}
           >
             Dentalcare
           </h1>
-
           <div className="w-full flex flex-col md:flex-row justify-around items-center gap-4 mb-8 z-20 px-6">
             <p className="flex items-center gap-2 text-center">
               <span className="rounded-full bg-accent-two w-8 h-8 flex items-center justify-center">
@@ -111,7 +111,6 @@ export default function Home() {
               No more pain
             </p>
           </div>
-
           <Image
             src="/doctor.png"
             alt="Dentalcare"
@@ -119,7 +118,6 @@ export default function Home() {
             height={400}
             className="absolute -bottom-20 w-48 sm:w-60 md:w-72 lg:w-96 h-auto z-10"
           />
-
           <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-end gap-6 p-6 md:p-10 z-20">
             <p className="max-w-xl text-center md:text-left">
               If you are looking for a dental clinic that provides high-quality
@@ -244,7 +242,7 @@ export default function Home() {
 
       {/* services section */}
       <section className="flex justify-center items-center px-4 mt-14 mb-14">
-        <div className="w-full max-w-7xl flex flex-col justify-center items-center bg-main rounded-[30px] p-6 md:p-8 lg:p-10">
+        <div className="w-full max-w-7xl flex flex-col justify-center items-center bg-[url('/background.jpeg')] bg-center bg-cover bg-no-repeat rounded-[30px] p-6 md:p-8 lg:p-10">
           <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
             <h1
               className={`${robotoSlab.className} text-white text-3xl md:text-4xl font-bold leading-tight`}
@@ -298,7 +296,7 @@ export default function Home() {
 
       {/* stats section */}
       <section className="w-full mt-4 flex flex-col justify-center items-center">
-        <div className="w-full flex flex-col justify-center items-center bg-[#552bb6] py-16 md:py-20 px-4">
+        <div className="w-full flex flex-col justify-center items-center bg-[url('/bg3.jpeg')] bg-center bg-cover bg-no-repeat py-16 md:py-20 px-4">
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-5">
             <div className="relative lg:col-span-2 lg:row-span-2 bg-accent rounded-[30px] p-6 md:p-8 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <h1

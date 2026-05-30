@@ -35,7 +35,7 @@ export default function TeamSection() {
 
   return (
     <section className="w-full mt-4 flex flex-col justify-center items-center mt-14 mb-14 px-4">
-      <div className="w-full max-w-7xl flex flex-col justify-center items-center bg-main rounded-[30px] p-6 md:p-8 lg:p-10 gap-6">
+      <div className="w-full max-w-7xl flex flex-col justify-center items-center bg-[url('/bg4.jpeg')] bg-center bg-cover bg-no-repeat rounded-[30px] p-6 md:p-8 lg:p-10 gap-6">
         {/* Header */}
         <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4">
           <h1 className={`text-white text-2xl md:text-3xl font-bold text-center md:text-left`}>
