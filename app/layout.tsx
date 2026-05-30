@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Fredoka } from "next/font/google";
 import { Roboto_Slab } from "next/font/google";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Footer } from "@/components/footer";
 
 const fredoka = Fredoka({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={`${fredoka.className} min-h-full flex flex-col`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
