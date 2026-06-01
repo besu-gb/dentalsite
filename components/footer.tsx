@@ -1,105 +1,104 @@
 import Link from "next/link";
-import Image from "next/image";
 import { robotoSlab } from "@/app/layout";
+
+const socialLinks = [
+  { icon: "facebook-f", label: "Facebook" },
+  { icon: "instagram", label: "Instagram" },
+  { icon: "linkedin-in", label: "LinkedIn" },
+  { icon: "tiktok", label: "TikTok" },
+];
+
+const quickLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
+];
 
 export function Footer() {
   return (
-    <div className="flex justify-center items-center px-4 py-8">
-      <footer className="w-full max-w-7xl flex flex-col justify-center items-center py-12 md:py-16 px-6 md:px-10 border border-white/10 rounded-[30px] bg-main text-white">
-        <div className="w-full flex flex-col md:flex-row justify-evenly items-start gap-10 mb-12">
+    <footer className="px-4 pb-6 pt-2">
+      <div className="mx-auto max-w-7xl rounded-[34px] border-[3px] border-main bg-[#10263f] p-6 text-white shadow-[12px_12px_0_#10263f] md:p-8 lg:p-10">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr_0.8fr]">
           <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-white/75">
+              Dentalcare
+            </p>
+
             <h2
-              className={`${robotoSlab.className} text-2xl font-semibold mb-4`}
+              className={`${robotoSlab.className} mt-5 text-4xl font-bold leading-tight sm:text-5xl`}
             >
-              Contact Us
+              Dentalcare.
             </h2>
 
-            <div className="space-y-2 text-gray-300">
+            <p className="mt-4 max-w-xl text-sm leading-7 text-white/75">
+              A stronger digital front door builds trust fast. This design keeps
+              the brand memorable, premium, and action-focused.
+            </p>
+          </div>
+
+          <div>
+            <h3 className={`${robotoSlab.className} text-2xl font-bold`}>
+              Contact
+            </h3>
+
+            <div className="mt-5 space-y-3 text-sm text-white/75">
               <p>123 Dental Street, Smile City</p>
               <p>(123) 456-7890</p>
               <p>info@dentalcare.com</p>
             </div>
-          </div>
 
-          <div>
-            <h2
-              className={`${robotoSlab.className} text-2xl font-semibold mb-4`}
-            >
-              Follow Us
-            </h2>
-
-            <div className="flex gap-3">
-              {["facebook-f", "twitter", "instagram", "linkedin-in"].map(
-                (icon) => (
-                  <Link
-                    key={icon}
-                    href="#"
-                    className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-gray-300 hover:text-white hover:bg-white/10 hover:scale-110 transition-all duration-300"
-                  >
-                    <i className={`fab fa-${icon}`} />
-                  </Link>
-                ),
-              )}
+            <div className="mt-6 flex flex-wrap gap-3">
+              {socialLinks.map((social) => (
+                <Link
+                  key={social.icon}
+                  href="#"
+                  aria-label={social.label}
+                  className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white/10"
+                >
+                  <i className={`fab fa-${social.icon}`} />
+                </Link>
+              ))}
             </div>
           </div>
 
           <div>
-            <h2
-              className={`${robotoSlab.className} text-2xl font-semibold mb-4`}
-            >
+            <h3 className={`${robotoSlab.className} text-2xl font-bold`}>
               Quick Links
-            </h2>
+            </h3>
 
-            <ul className="space-y-2 text-gray-300">
-              <li>
-                <Link href="/" className="hover:text-white transition">
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/about" className="hover:text-white transition">
-                  About
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/services" className="hover:text-white transition">
-                  Services
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/contact" className="hover:text-white transition">
-                  Contact
-                </Link>
-              </li>
+            <ul className="mt-5 space-y-3 text-sm text-white/75">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors duration-300 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="w-full h-px bg-white/10 mb-8" />
+        <div className="mt-8 h-px bg-white/10" />
 
-        <div className="w-full flex flex-col md:flex-row justify-center items-center gap-4">
-          <Image
-            src="/vercel.svg"
-            alt="Dentalcare Logo"
-            width={50}
-            height={50}
-            className="opacity-90"
-          />
+        <div className="mt-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div className="flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/5">
+              <i className="fas fa-tooth text-lg" />
+            </span>
+            <p className={`${robotoSlab.className} text-3xl font-bold`}>
+              Dentalcare
+            </p>
+          </div>
 
-          <h1
-            className={`${robotoSlab.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center`}
-          >
-            Dentalcare
-          </h1>
+          <p className="text-sm text-white/55">
+            © {new Date().getFullYear()} Dentalcare. All rights reserved.
+          </p>
         </div>
-
-        <p className="text-center text-gray-400 text-sm mt-8">
-          © {new Date().getFullYear()} Dentalcare. All rights reserved.
-        </p>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }

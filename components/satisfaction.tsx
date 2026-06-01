@@ -4,34 +4,34 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function BeforeAfterSection() {
-  const patients = [
-    {
-      name: "Sarah Johnson",
-      treatment: "Teeth Whitening",
-      description:
-        "Professional whitening treatment that restored a brighter and more confident smile.",
-      before: "/doctor.png",
-      after: "/doctor2.png",
-    },
-    {
-      name: "Michael Brown",
-      treatment: "Dental Veneers",
-      description:
-        "Custom veneers improved tooth shape, color, and overall smile appearance.",
-      before: "/before2.jpg",
-      after: "/after2.jpg",
-    },
-    {
-      name: "Emma Wilson",
-      treatment: "Orthodontic Treatment",
-      description:
-        "Alignment correction created a healthier bite and straighter smile.",
-      before: "/before3.jpg",
-      after: "/after3.jpg",
-    },
-  ];
+const patients = [
+  {
+    name: "Sarah Johnson",
+    treatment: "Teeth Whitening",
+    description:
+      "A brighter, cleaner smile with a calm treatment flow and a natural finish.",
+    before: "/doctor.png",
+    after: "/doctor2.png",
+  },
+  {
+    name: "Michael Brown",
+    treatment: "Cosmetic Consultation",
+    description:
+      "A clearer smile story that looks sharper on camera and more confident in person.",
+    before: "/drabel.jpeg",
+    after: "/drasefa.jpeg",
+  },
+  {
+    name: "Emma Wilson",
+    treatment: "Smile Makeover",
+    description:
+      "Subtle changes, stronger harmony, and a result that feels more polished overall.",
+    before: "/drbinyam.jpeg",
+    after: "/doctor2.png",
+  },
+];
 
+export default function BeforeAfterSection() {
   const [currentPatient, setCurrentPatient] = useState(0);
 
   const nextPatient = () => {
@@ -43,65 +43,75 @@ export default function BeforeAfterSection() {
   };
 
   return (
-    <section className="w-full mt-8 mb-14 px-4 flex justify-center">
-      <div className="w-full max-w-7xl bg-main rounded-[30px] p-6 md:p-8 lg:p-10">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
-          <div>
-            <h2 className="text-white text-3xl md:text-4xl font-bold">
-              Patient Before & After
+    <section className="px-4 py-6 pb-16">
+      <div className="mx-auto max-w-7xl rounded-[36px] border-[3px] border-[#c6e7a0] bg-accent-two p-6 text-white shadow-[12px_12px_0_#4a7e0f] md:p-8 lg:p-10">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-white/75">
+              Before / after proof
+            </p>
+
+            <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl">
+              Real transformations that make the result easy to believe.
             </h2>
-            <p className="text-white/70 mt-2">
-              Real transformations from our satisfied patients.
+
+            <p className="mt-4 text-sm leading-7 text-white/75">
+              Strong results are easier to sell when the experience feels clear
+              and the visuals make the change obvious.
             </p>
           </div>
 
-          <div className="bg-button text-white px-6 py-3 rounded-full">
-            Smile Transformations
+          <div className="rounded-full border border-white/15 bg-white/35 px-5 py-3 text-sm font-semibold">
+            Swipe or tap to switch patients
           </div>
         </div>
 
-        {/* Main Content */}
         <motion.div
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={(event, info) => {
+          onDragEnd={(_, info) => {
             if (info.offset.x > 100) prevPatient();
             if (info.offset.x < -100) nextPatient();
           }}
-          className="grid lg:grid-cols-3 gap-8 items-center"
+          className="mt-10 grid gap-8 lg:grid-cols-[1fr_0.9fr_1fr] lg:items-center"
         >
-          {/* Before */}
-          <div className="flex flex-col items-center">
-            <div className="relative overflow-hidden rounded-[30px]">
-              <Image
-                src={patients[currentPatient].before}
-                alt="Before Treatment"
-                width={350}
-                height={400}
-                className="w-full h-[400px] object-cover rounded-[30px]"
-              />
-              <span className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Before
-              </span>
+          <motion.div
+            key={`before-${currentPatient}`}
+            initial={{ opacity: 0, x: -18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35 }}
+            className="flex justify-center"
+          >
+            <div className="w-full max-w-[360px] overflow-hidden rounded-[30px] border-2 border-white/15 bg-white/5 shadow-[8px_8px_0_#4a7e0f]">
+              <div className="relative">
+                <Image
+                  src={patients[currentPatient].before}
+                  alt="Before Treatment"
+                  width={420}
+                  height={520}
+                  className="h-[420px] w-full object-cover"
+                />
+                <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-main px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-white">
+                  Before
+                </span>
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Center Content */}
-          <div className="flex flex-col justify-center items-center text-center">
-            <div className="bg-accent text-white px-6 py-3 rounded-full mb-6 rotate-2">
-              Real Patient Result
-            </div>
+          <div className="flex flex-col items-center text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-white/75">
+              <i className="fas fa-sparkles" />
+              Patient result
+            </span>
 
-            <h3 className="text-white text-3xl font-bold">
+            <h3 className="mt-5 text-3xl font-bold">
               {patients[currentPatient].name}
             </h3>
-
-            <p className="text-accent-two text-lg mt-2 font-semibold">
+            <p className="mt-2 text-lg font-semibold text-main">
               {patients[currentPatient].treatment}
             </p>
 
-            <p className="text-white/80 mt-6 leading-relaxed">
+            <p className="mt-5 max-w-md text-sm leading-7 text-white/75">
               {patients[currentPatient].description}
             </p>
 
@@ -109,48 +119,59 @@ export default function BeforeAfterSection() {
               {patients.map((_, index) => (
                 <button
                   key={index}
+                  type="button"
                   onClick={() => setCurrentPatient(index)}
-                  className={`h-3 w-3 rounded-full transition-all ${
-                    currentPatient === index ? "bg-white w-8" : "bg-white/40"
+                  className={`h-3 rounded-full transition-all ${
+                    currentPatient === index
+                      ? "w-10 bg-white"
+                      : "w-3 bg-white/35"
                   }`}
+                  aria-label={`View patient ${index + 1}`}
                 />
               ))}
             </div>
-          </div>
 
-          {/* After */}
-          <div className="flex flex-col items-center">
-            <div className="relative overflow-hidden rounded-[30px]">
-              <Image
-                src={patients[currentPatient].after}
-                alt="After Treatment"
-                width={350}
-                height={400}
-                className="w-full h-[400px] object-cover rounded-[30px]"
-              />
-              <span className="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                After
-              </span>
+            <div className="mt-8 grid grid-cols-2 gap-3">
+              <button
+                onClick={prevPatient}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/35 px-5 py-3 text-sm font-bold text-main/85 transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                <i className="fas fa-arrow-left" />
+                Prev
+              </button>
+              <button
+                onClick={nextPatient}
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-main bg-[#ffb347] px-5 py-3 text-sm font-bold text-main shadow-[6px_6px_0_#10263f] transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                Next
+                <i className="fas fa-arrow-right" />
+              </button>
             </div>
           </div>
+
+          <motion.div
+            key={`after-${currentPatient}`}
+            initial={{ opacity: 0, x: 18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35 }}
+            className="flex justify-center"
+          >
+            <div className="w-full max-w-[360px] overflow-hidden rounded-[30px] border-2 border-white/15 bg-white/5 shadow-[8px_8px_0_#4a7e0f]">
+              <div className="relative">
+                <Image
+                  src={patients[currentPatient].after}
+                  alt="After Treatment"
+                  width={420}
+                  height={520}
+                  className="h-[420px] w-full object-cover"
+                />
+                <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-accent px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-white">
+                  After
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
-
-        {/* Arrows */}
-        <div className="flex justify-center items-center gap-4 mt-10">
-          <button
-            onClick={prevPatient}
-            className="w-14 h-14 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
-          >
-            <i className="fas fa-arrow-left"></i>
-          </button>
-
-          <button
-            onClick={nextPatient}
-            className="w-14 h-14 rounded-full bg-button text-white hover:scale-105 transition-all duration-300"
-          >
-            <i className="fas fa-arrow-right"></i>
-          </button>
-        </div>
       </div>
     </section>
   );
